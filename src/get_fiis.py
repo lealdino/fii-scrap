@@ -7,14 +7,22 @@ from datetime import  datetime
 from datetime import timedelta
 
 
+import warnings
+warnings.filterwarnings("ignore")
 
-def get_fiis():
+
+def get_fundos():
+
+    """
+        Return a dataframe with FIIS (Fundos Imobiliários) coletados da plataforma Funds Explorer
+    """
 
     url = 'https://www.fundsexplorer.com.br/ranking'
     agent = {"User-Agent":"Mozilla/5.0"}
     resposta = requests.get(url, headers= agent)
     soup = BeautifulSoup(resposta.text, 'lxml')
     tabela = soup.find_all('table')[0]
+    
     df = pd.read_html(str(tabela), decimal = ',', thousands= '.')[0]
     
 
@@ -96,3 +104,5 @@ def get_fiis():
 
     
     return df
+
+
