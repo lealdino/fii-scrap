@@ -1,17 +1,15 @@
+
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import numpy as np
-import yfinance as yf
-from datetime import  datetime
-from datetime import timedelta
-
 
 import warnings
 warnings.filterwarnings("ignore")
 
 
 def get_fundos():
+
+
 
     """
         Return a dataframe with FIIS (Fundos Imobiliários) coletados da plataforma Funds Explorer
