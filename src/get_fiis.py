@@ -6,10 +6,7 @@ from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore")
 
-
 def get_fundos():
-
-
 
     """
         Return a dataframe with FIIS (Fundos Imobiliários) coletados da plataforma Funds Explorer
@@ -39,4 +36,22 @@ def get_fundos():
     
     return df
 
+
+
+
+def get_fundos_symbols():
+    
+    """
+        Return a list of FIIS
+    """
+
+    url = 'https://www.fundsexplorer.com.br/ranking'
+    agent = {"User-Agent":"Mozilla/5.0"}
+    resposta = requests.get(url, headers= agent)
+    soup = BeautifulSoup(resposta.text, 'lxml')
+    tabela = soup.find_all('table')[0]
+    
+    df = pd.read_html(str(tabela), decimal = ',', thousands= '.')[0]
+
+    return list(df['Códigodo fundo'])
 
