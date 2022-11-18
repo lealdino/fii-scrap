@@ -25,11 +25,12 @@ def get_fundos():
 
     for coluna in colunas:
         try:
-            df[coluna] = df[coluna].apply(
-                lambda s: re.sub(r'[R$.%]', r'', str(s))
-            )
-            df[coluna] = df[coluna].apply(
-                lambda s: re.sub(r',', r'.', str(s))).astype(float)
+            if coluna not in ['Setor', 'Códigodo fundo']:
+                df[coluna] = df[coluna].apply(
+                    lambda s: re.sub(r'[R$.%]', r'', str(s))
+                )
+                df[coluna] = df[coluna].apply(
+                    lambda s: re.sub(r',', r'.', str(s))).astype(float)
 
         except:
             continue
