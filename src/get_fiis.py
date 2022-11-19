@@ -30,7 +30,7 @@ def get_fundos():
             if coluna not in ['Setor', 'Códigodo fundo']:
                 df[coluna] = df[coluna] = df[coluna].str.replace(r"((?!(,|[0-9])).)", '', regex=True)
             df[coluna] = df[coluna].str.replace(',', '.').astype(float)
-              
+            
         except:
             continue
 
