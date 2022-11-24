@@ -51,4 +51,4 @@ def get_fundos_symbols():
 
     df = pd.read_html(str(tabela), decimal=',', thousands='.')[0]
 
-    return list(df['Códigodo fundo'])
+    return list(df['Códigodo fundo'].unique())
